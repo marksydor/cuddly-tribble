@@ -1,11 +1,16 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
+const settings = {
+  appName: "Aug15_3"
+}
+
 module.exports = (env, arg) => ({
   entry: ['./src/app.js'],
   output: {
     filename: "main.bundle.js",
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: `/webapp/${settings.appName}`
   },
   devtool: arg.mode != 'production' ? 'eval-source-map' : 'nosources-source-map',
   module: {
